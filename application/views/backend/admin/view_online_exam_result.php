@@ -30,7 +30,7 @@
 </div>
 
 								
-		<table class="table ">
+		<table class="table">
 			<thead>
                 <tr>
                     <th><div><b><?php echo get_phrase('student_name');?></b></div></th>
@@ -44,7 +44,7 @@
 $online_exam_details1 = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row_array();
 //echo(json_encode($online_exam_details1));
 $online_exam_results1 = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id))->result_array();
-//echo(json_encode($online_exam_results1));
+//echo(json_encode($online_exam_results1));dd
 $students1 = $this->db->get_where('student', array('class_id' => $online_exam_details1['class_id'], 'section_id' => $online_exam_details1['section_id'], 'student_id' => '45',
 'session' => $online_exam_details1['running_year']))->result_array();
 
