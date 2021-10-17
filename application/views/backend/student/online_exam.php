@@ -49,7 +49,7 @@
 											</a>
 										<?php else: ?>
 											<div class="alert alert-info">
-											<a href="<?php echo site_url('student/take_online_exam/'.$row['code']);?>" class="btn btn-primary btn-rounded btn-sm" style="color:white">
+											<a href=""  disabled="disabled" class="btn btn-primary btn-rounded btn-sm" style="color:white">
 												<i class="fa fa-check"></i>&nbsp; <?php echo get_phrase('take_exam');?>
 											</a>
 												<?php echo get_phrase('you_can_only_take_the_exam_during_the_scheduled_time');?>

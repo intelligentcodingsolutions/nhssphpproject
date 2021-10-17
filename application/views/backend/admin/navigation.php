@@ -104,7 +104,7 @@
     </li>
     <?php endif;?> <!---  Permission for Admin Manage Academics ends here ------>
                    
-    <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-angle-double-right p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Examination');?> <span class="fa arrow"></span></span></a>
+    <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-angle-double-right p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Online Examination');?> <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
                            
                             <li class="<?php if($page_name == 'cretae_online_exam') echo 'active'; ?>"> <a href="<?php echo base_url();?>admin/create_online_exam"><?php echo get_phrase('create_online_exam');?></a> </li>

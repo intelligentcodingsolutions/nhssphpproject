@@ -33,46 +33,50 @@
 		<table class="table ">
 			<thead>
                 <tr>
-                    <th><div><?php echo get_phrase('student_name');?></div></th>
-                    <th><div><?php echo get_phrase('obtained_marks');?></div></th>
-                    <th><div><?php echo get_phrase('result');?></div></th>
+                    <th><div><b><?php echo get_phrase('student_name');?></b></div></th>
+                    <th><div><b><?php echo get_phrase('obtained_marks');?></b></div></th>
+                    <th><div><b><?php echo get_phrase('result');?></b></div></th>
                 </tr>
             </thead>
             <tbody>
             	<?php 
+
+$online_exam_details1 = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row_array();
+//echo(json_encode($online_exam_details1));
+$online_exam_results1 = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id))->result_array();
+//echo(json_encode($online_exam_results1));
+$students1 = $this->db->get_where('student', array('class_id' => $online_exam_details1['class_id'], 'section_id' => $online_exam_details1['section_id'], 'student_id' => '45',
+'session' => $online_exam_details1['running_year']))->result_array();
+
+
+//echo(json_encode($students1));
+
                    // $students = $this->db->get_where('student', array('section_id' => $online_exam_details->section_id, 'class_id' => $online_exam_details->class_id, 'session' => $online_exam_details->running_year  ))->row()->name;
                     ?>
-						<?php foreach ($students as $row): ?>
-                    <tr>
+
+<?php foreach ($online_exam_results1 as $key => $online_exam_result1): ?>
+
+    <tr>
+
+    <td>
+    <?php $studentdetail = $this->db->get_where('student', array('student_id' => $online_exam_result1['student_id']))->row()->name;
+ ?>
+  <?php echo $studentdetail;?>
+
+    </td>
                     	<td>
-                            <?php $student_details = $this->crud_model->get_student_info_by_id($row['student_id']); echo $student_details['name'];?>
+                            <?php echo $online_exam_result1['obtained_mark'];?>
+                            
                         </td>
-                    	<td>
-                    		<?php
-                                $query = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $row['student_id']));
-                                if ($query->num_rows() > 0){
-                                    $query_result = $query->row_array();
-                                    echo $query_result['obtained_mark'];
-                                }
-                                else {
-                                    echo 0;
-                                }
-                             ?>
-                    	</td>
-                    	<td>
-                            <?php
-                                $query = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $row['student_id']));
-                                if ($query->num_rows() > 0){
-                                    $query_result = $query->row_array();
-                                    echo get_phrase($query_result['result']);
-                                }
-                                else {
-                                    echo get_phrase('fail').' ( '.get_phrase('absent').' )';
-                                }
-                             ?>
-                    	</td>
-                    </tr>
-            <?php endforeach; ?>
+                        <td>
+                         <?php echo $online_exam_result1['result'];?>
+                        </td>
+
+    </tr>
+ <?php endforeach; ?>
+
+
+
             </tbody>
 		</table>
 	</div>
