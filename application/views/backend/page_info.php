@@ -10,6 +10,7 @@
                             <li><a href=""><?php echo $system_name;?></a></li>
                             <li class="active"><?php date_default_timezone_set('Asia/Kolkata'); 
                            ?></li>
+                           <!--Dynamic timing-->
                             <li id="timeNow" class="active"></li>
                         </ol>
                     </div>
