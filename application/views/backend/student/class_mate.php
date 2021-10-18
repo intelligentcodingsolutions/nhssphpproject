@@ -12,12 +12,19 @@
                             <th width="80"><div><?php echo get_phrase('photo');?></div></th>
                             <th><div><?php echo get_phrase('name');?></div></th>
                             <th><div><?php echo get_phrase('email');?></div></th>
-                            <th><div><?php echo get_phrase('sex');?></div></th>
+                            <th><div><?php echo get_phrase('gender');?></div></th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($select_student_class_id as $key => $student){ ?>
+                        <?php $studentdetails = $this->db->get_where('student', array('student_id' => $this->session->userdata('student_id')))->row_array();
+                        $class_id = $studentdetails['class_id'];
+                        $section_id= $studentdetails['section_id'];
+                        $classmatesdetails = $this->db->get_where('student', array('class_id' =>  $class_id, 'section_id' =>$section_id))->result_array();
+                        
+                        ?>
+                    <?php foreach($classmatesdetails as $key => $student){ ?>
                         <tr>
+                            if
                             <td><img src="<?php echo $this->crud_model->get_image_url('student', $student['student_id']);?>" class="img-circle" width="30px"></td>
                             <td><?php echo $student['name'];?></td>
                             <td><?php echo $student['email'];?></td>
