@@ -98,7 +98,7 @@
 		<!-- true / false -->
 		<?php if ($question['type'] == 'true_false'): ?>
 			<div class="col-md-12" style="margin-bottom: 15px;">
-				<div class="checkbox checkbox-replace color-green">
+				<div class="">
 				    <input type="radio" id="chk-23" name="<?php echo $question['question_bank_id'].'[]'; ?>" value="true">
 				    <label style="color: #373e4a; font-size: 15px;">
 				    	<?php echo get_phrase('true');?>
@@ -106,7 +106,7 @@
 			    </div>
 			</div>
 			<div class="col-md-12" style="margin-bottom: 15px;">
-				<div class="checkbox checkbox-replace color-green">
+				<div class="">
 				    <input type="radio" id="chk-23" name="<?php echo $question['question_bank_id'].'[]'; ?>" value="false">
 				    <label style="color: #373e4a; font-size: 15px;">
 				    	<?php echo get_phrase('false');?>
